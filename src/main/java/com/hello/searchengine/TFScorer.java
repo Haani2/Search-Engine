@@ -1,11 +1,11 @@
 package com.hello.searchengine;
 
 public class TFScorer {
-    public Double calculatorTf(Document doc,String term){
+    public Double calculatorTF(Document doc,String term){
         String[] word = doc.getContent().split(" ");
         int count=0;
         for(String words:word){
-            if(term.equals(words)){
+            if(term.equalsIgnoreCase(words)){
                 count++;
             }
         }

@@ -14,9 +14,9 @@ public class Indexer {
            String content=doc.getContent();
            String[] word=content.split(" ");
            for(String sc:word){
-               List<Integer> docList=invertedIndex.getOrDefault(sc,new ArrayList<>());
+               List<Integer> docList=invertedIndex.getOrDefault(sc.toLowerCase(),new ArrayList<>());
                docList.add(doc.getId());
-               invertedIndex.put(sc,docList);
+               invertedIndex.put(sc.toLowerCase(),docList);
            }
         }
     }
