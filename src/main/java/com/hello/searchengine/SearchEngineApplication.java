@@ -1,8 +1,11 @@
 package com.hello.searchengine;
 
+import com.hello.searchengine.Indexer.Indexer;
+import com.hello.searchengine.Indexer.TFScorer;
+import com.hello.searchengine.Model.Document;
+import com.hello.searchengine.Service.SearchService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;

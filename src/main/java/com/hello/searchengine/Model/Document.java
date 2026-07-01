@@ -1,4 +1,4 @@
-package com.hello.searchengine;
+package com.hello.searchengine.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
