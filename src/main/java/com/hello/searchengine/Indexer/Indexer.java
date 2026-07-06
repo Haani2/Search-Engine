@@ -13,6 +13,8 @@ import java.util.List;
 public class Indexer {
     @Getter
     private HashMap<String, List<Integer>> invertedIndex=new HashMap<>();
+    @Getter
+    private HashMap<Integer, Document> documentStore = new HashMap<>();
 
     @PostConstruct
     public void init() {
@@ -24,13 +26,15 @@ public class Indexer {
     }
     public void buildIndex(List<Document> documents){
         for(Document doc:documents){
+            documentStore.put(doc.getId(),doc);
            String content=doc.getContent();
            String[] word=content.split(" ");
-           for(String sc:word){
-               List<Integer> docList=invertedIndex.getOrDefault(sc.toLowerCase(),new ArrayList<>());
+           for(String sc:word) {
+               List<Integer> docList = invertedIndex.getOrDefault(sc.toLowerCase(), new ArrayList<>());
                docList.add(doc.getId());
-               invertedIndex.put(sc.toLowerCase(),docList);
+               invertedIndex.put(sc.toLowerCase(), docList);
            }
         }
+
     }
 }

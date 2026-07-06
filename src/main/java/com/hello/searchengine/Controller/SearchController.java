@@ -1,5 +1,6 @@
 package com.hello.searchengine.Controller;
 
+import com.hello.searchengine.Model.Document;
 import com.hello.searchengine.Service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class SearchController {
     }
 
     @GetMapping("search")
-    public List<Integer> searching(@RequestParam String q){
+    public List<Document> searching(@RequestParam String q){
         return  searchService.search(q);
     }
 }

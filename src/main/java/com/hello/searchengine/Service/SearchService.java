@@ -1,6 +1,7 @@
 package com.hello.searchengine.Service;
 
 import com.hello.searchengine.Indexer.Indexer;
+import com.hello.searchengine.Model.Document;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,8 @@ public class SearchService {
      }
 
 
-     public List<Integer> search(String query){
+     public List<Document> search(String query){
+         HashMap<Integer,Document> documentList= indexer.getDocumentStore();
          HashMap<String, List<Integer>> map=indexer.getInvertedIndex();
        String[] word=query.split(" ");
        List<Integer> result=null;
@@ -28,6 +30,10 @@ public class SearchService {
                result.retainAll(doclist);
            }
        }
-       return result;
+         List<Document> documents= new ArrayList<>();
+         for (int i=0;result!=null && i<result.size();i++) {
+             documents.add(documentList.get(result.get(i)));
+         }
+         return documents;
      }
 }
