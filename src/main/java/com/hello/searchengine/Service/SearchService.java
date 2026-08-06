@@ -12,13 +12,14 @@ import java.util.List;
 public class SearchService {
     private Indexer indexer;
      public SearchService(Indexer indexer){
+
          this.indexer=indexer;
-     }
 
-
+     }//Dependencies injection here
      public List<Document> search(String query){
          HashMap<Integer,Document> documentList= indexer.getDocumentStore();
          HashMap<String, List<Integer>> map=indexer.getInvertedIndex();
+
        String[] word=query.split(" ");
        List<Integer> result=null;
        for(String words:word){
