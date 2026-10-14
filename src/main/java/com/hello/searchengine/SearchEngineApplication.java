@@ -6,6 +6,8 @@ import com.hello.searchengine.Model.Document;
 import com.hello.searchengine.Service.SearchService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class SearchEngineApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SearchEngineApplication.class, args);
+
 
 //        Document doc = new Document(1,"url/1","java","Java interview",4);
 //        Document doc1 = new Document(2,"url/2","python","first python code",5);
@@ -36,4 +39,9 @@ public class SearchEngineApplication {
 
     }
 
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+
+    }
 }

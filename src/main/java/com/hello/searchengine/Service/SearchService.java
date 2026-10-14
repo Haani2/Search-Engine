@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+
 @Service
 public class SearchService {
     private Indexer indexer;
@@ -33,7 +35,9 @@ public class SearchService {
        }
          List<Document> documents= new ArrayList<>();
          for (int i=0;result!=null && i<result.size();i++) {
+
              documents.add(documentList.get(result.get(i)));
+
          }
          return documents;
      }
