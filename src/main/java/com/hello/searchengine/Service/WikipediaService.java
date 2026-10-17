@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
-public class WikipediaService {
+public class WikipediaService implements SearchSource {
 
     private static final String SEARCH_URL =
             "https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srlimit=10&srsearch=";
@@ -22,7 +22,8 @@ public class WikipediaService {
     public WikipediaService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
-    public List<Document> search(String query) {
+    @Override
+    public List<Document> search(String query) { // function is pretty printing the json
         String url = SEARCH_URL + query;
 
         HttpHeaders headers = new HttpHeaders();
@@ -54,5 +55,10 @@ public class WikipediaService {
             e.printStackTrace();
         }
         return results;
+    }
+
+    @Override
+    public String getSourceName() {
+        return "Wikipedia";
     }
 }
